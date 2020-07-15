@@ -1,114 +1,18 @@
--- Create table
-create table MINCAP.INC_SOLICITUD
-(
-  solicitud_id                NUMBER(20) not null, PK
-  cuenta_id                   NUMBER(20) not null,
-  eps_id                      NUMBER(4),
-  arl_id                      NUMBER(4),
-  envio_mail                  VARCHAR2(1),
-  envio_sms                   VARCHAR2(1),
-  estado_solicitud_id         VARCHAR2(70) not null,
-  tipo_solicitud              VARCHAR2(50) not null,
-  tutela                      VARCHAR2(1),
-  fecha_tutela                DATE,
-  apelacion                   VARCHAR2(1),
-  fecha_apelacion             DATE,
-  fecha_radicacion            DATE,
-  fecha_dia_181               DATE,
-  fecha_dia_360               DATE,
-  usuario_creacion            VARCHAR2(20) not null,
-  fecha_creacion              DATE not null,
-  usuario_ultima_modificacion VARCHAR2(20),
-  fecha_ultima_modificacion   DATE,
-  mfondos_scn                 NUMBER(10) default 0 not null,
-  solicitud_origen_horizonte  NUMBER,
-  crie                        DATE,
-  calculo_181_id              NUMBER(20)
-)
+CREATE TABLE TOTEMS.SERVICIOS (
+    SERVICIO_ID   VARCHAR2(100) NOT NULL, PK
+    DESCRIPCION   VARCHAR2(1000) NOT NULL,
+  USUARIO_CREACION VARCHAR(30) NOT NULL,
+  FECHA_CREACION  TIMESTAMP NOT NULL,
+  USUARIO_MODIFICACION VARCHAR2(30),
+  FECHA_MODIFICACION TIMESTAMP
+);
 
--- Create table
-create table MCUENTAS.CTA_CUENTA
-(
-  afiliado_fondo_id             NUMBER(10) not null,
-  cuenta_id                     NUMBER(20) not null, PK
-  tipo_afiliado                 VARCHAR2(30) not null,
-  estado_afiliado_fondo_id      VARCHAR2(20) not null,
-  subestado_afiliado_fondo_id   VARCHAR2(20) not null,
-  periodo_primera_cotizacion    NUMBER(6),
-  fecha_primera_cotizacion      DATE,
-  ultimo_tipo_id_nit_pago       VARCHAR2(3),
-  ultimo_nit_pago               NUMBER(20),
-  ultimo_periodo_pago           NUMBER(6),
-  ultima_fecha_pago             DATE,
-  ultimo_ibc_pago               NUMBER(10),
-  ultimo_salario_base           NUMBER(12),
-  ultimo_salario_real           NUMBER(10),
-  usuario_creacion              VARCHAR2(20) not null,
-  fecha_creacion                DATE not null,
-  usuario_ultima_modificacion   VARCHAR2(20),
-  fecha_ultima_modificacion     DATE,
-  detalle_afiliacion_id         NUMBER(20),
-  folio                         NUMBER(15),
-  tipo_vinculacion              VARCHAR2(20) not null,
-  codigo_entidad_origen         VARCHAR2(5),
-  codigo_entidad_destino        VARCHAR2(5),
-  indicador_embargo             VARCHAR2(1),
-  fecha_solicitud               DATE,
-  fecha_ingreso_porvenir        DATE,
-  fecha_sol_pri_ing_rai         DATE,
-  fecha_efe_pri_ing_rai         DATE,
-  fecha_sol_ult_ing_rai         DATE,
-  fecha_efe_ult_ing_rai         DATE,
-  fecha_desistimiento_anulacion DATE,
-  fecha_traslado                DATE,
-  fecha_traslado_iss            DATE,
-  regional                      VARCHAR2(2),
-  zona                          VARCHAR2(2),
-  director                      VARCHAR2(2),
-  asesor                        NUMBER(11),
-  mfondos_scn                   NUMBER(10) default 0,
-  voluntad_afiliacion           VARCHAR2(20),
-  fecha_ultima_dispersion       DATE,
-  retracto_hecho                VARCHAR2(1),
-  retracto_administradora_id    VARCHAR2(5),
-  fecha_retracto                DATE,
-  conocimiento_cliente          VARCHAR2(1)
-)
-
--- Create table
-create table MCUENTAS.CTA_AFILIADO
-(
-  fondo_id                    NUMBER(5) not null,
-  afiliado_fondo_id           NUMBER(10) not null, PK
-  tipo_identificacion         VARCHAR2(3) not null,
-  numero_identificacion       NUMBER(11) not null,
-  problemas_registraduria     VARCHAR2(1) not null,
-  primer_apellido             VARCHAR2(20) not null,
-  segundo_apellido            VARCHAR2(20),
-  primer_nombre               VARCHAR2(20) not null,
-  segundo_nombre              VARCHAR2(20),
-  codigo_soundex              VARCHAR2(8) not null,
-  sexo                        VARCHAR2(1) not null,
-  nacionalidad                VARCHAR2(40),
-  indicador_carnet            VARCHAR2(1) not null,
-  ocupacion_cargo_actual      VARCHAR2(50),
-  indicador_correspondencia   VARCHAR2(20) not null,
-  indicador_envio_electronico VARCHAR2(1),
-  direccion                   VARCHAR2(100),
-  telefono                    VARCHAR2(30),
-  barrio                      VARCHAR2(30),
-  apartado_aereo              VARCHAR2(20),
-  codigo_ciudad               VARCHAR2(8) not null,
-  direccion_email             VARCHAR2(70),
-  fecha_nacimiento            DATE,
-  fecha_siniestro             DATE,
-  estado_pension              NUMBER(2),
-  tipo_siniestro              VARCHAR2(1),
-  ultima_liquidacion_obp      NUMBER(2),
-  usuario_creacion            VARCHAR2(20) not null,
-  fecha_creacion              DATE not null,
-  usuario_ultima_modificacion VARCHAR2(20),
-  fecha_ultima_modificacion   DATE,
-  mfondos_scn                 NUMBER(10) default 0,
-  celular                     NUMBER(10)
-)
+CREATE TABLE TOTEMS.PROPIEDADES_SERVICIOS (
+    SERVICIO_ID          VARCHAR2(100) NOT NULL, PK
+    PROPIEDAD_ID   		 VARCHAR2(500) NOT NULL, PK
+    PROPIEDAD_VALOR      VARCHAR2(1000) NOT NULL,
+	USUARIO_CREACION     VARCHAR(30) NOT NULL,
+	FECHA_CREACION  	 TIMESTAMP NOT NULL,
+	USUARIO_MODIFICACION VARCHAR2(30),
+	FECHA_MODIFICACION   TIMESTAMP
+);

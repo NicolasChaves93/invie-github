@@ -1,20 +1,21 @@
-DSAPPPARAMETROSRV
+DSAPPOBLIGATORIASSRV
 
-CREATE TABLE TOTEMS.SERVICIOS (
-    SERVICIO_ID   VARCHAR2(100) NOT NULL, PK
-    DESCRIPCION   VARCHAR2(1000) NOT NULL,
-  USUARIO_CREACION VARCHAR(30) NOT NULL,
-  FECHA_CREACION  TIMESTAMP NOT NULL,
-  USUARIO_MODIFICACION VARCHAR2(30),
-  FECHA_MODIFICACION TIMESTAMP
-);
-
-CREATE TABLE TOTEMS.PROPIEDADES_SERVICIOS (
-    SERVICIO_ID          VARCHAR2(100) NOT NULL, PK
-    PROPIEDAD_ID   		 VARCHAR2(500) NOT NULL, PK
-    PROPIEDAD_VALOR      VARCHAR2(1000) NOT NULL,
-	USUARIO_CREACION     VARCHAR(30) NOT NULL,
-	FECHA_CREACION  	 TIMESTAMP NOT NULL,
-	USUARIO_MODIFICACION VARCHAR2(30),
-	FECHA_MODIFICACION   TIMESTAMP
-);
+-- Create table
+create table MONITOR.MTX_ENVIO_SMS
+(
+  envio_sms_id                NUMBER(32) not null,
+  tipo_identificacion         VARCHAR2(5) not null,
+  numero_identificacion       NUMBER(20) not null,
+  numero_celular              NUMBER(15) not null,
+  aplicativo_origen           VARCHAR2(128) not null,
+  mensaje                     VARCHAR2(150) not null,
+  enviado                     VARCHAR2(1) default 'N' not null,
+  numero_intentos             NUMBER(2) default 0 not null,
+  codigo_error                NUMBER(8) default 0 not null,
+  mensaje_error               VARCHAR2(128),
+  fecha_creacion              DATE not null,
+  usuario_creacion            VARCHAR2(20) not null,
+  ultima_fecha_modificacion   DATE,
+  ultimo_usuario_modificacion VARCHAR2(20),
+  tipo_notificacion           VARCHAR2(4)
+)
